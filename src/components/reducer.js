@@ -1,5 +1,23 @@
 export const initialState = {
-  basket: [],
+  basket: [
+    {
+      id: 12312,
+      title: 'Mediweave 3 Ply Non-Woven Filter 20 GSM Face Mask-Pack of 50',
+      price: 199,
+      rating: 5,
+      image:
+        'https://images-na.ssl-images-amazon.com/images/I/71SUSc-97RL._UL1280_.jpg',
+    },
+    {
+      id: 12312,
+      title: 'Mediweave 3 Ply Non-Woven Filter 20 GSM Face Mask-Pack of 50',
+      price: 199,
+      rating: 5,
+      image:
+        'https://images-na.ssl-images-amazon.com/images/I/71SUSc-97RL._UL1280_.jpg',
+    },
+  ],
+  user: null,
 };
 
 const reducer = (state, action) => {
@@ -9,12 +27,24 @@ const reducer = (state, action) => {
       // logic for adding item to basket
       return {
         ...state,
-        basket : [...state.basket, action.item]
+        basket: [...state.basket, action.item],
       };
 
     case 'REMOVE_FROM_BASKET':
       //logic for removing item from basket
-      return { state };
+      
+      let newBasket = [...state.basket];
+      const index = state.basket.findIndex((basketItem)=> basketItem.id === action.id);
+      if(index >= 0){
+        // item exits in basket, remove it
+        newBasket.splice(index, 1);
+      }else{
+        console.warn(`Can't remove product (id : ${action.id} as it is not in the basket. )`)
+      }
+      return { 
+        ...state, 
+        basket : newBasket 
+      };
 
     default:
       return state;
