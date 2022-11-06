@@ -35,7 +35,7 @@ function App() {
     };
   }, []);
 
-  console.log(user);
+  console.log('use is >>> ',user);
 
   return (
     <Router>
@@ -50,7 +50,10 @@ function App() {
               </>
             }
           ></Route>
-          <Route path="/login" element={<Login />}></Route>
+          <Route
+            path="/login"
+            element={<Login />}
+          ></Route>
           {/* This is default route */}
           <Route
             path="/"

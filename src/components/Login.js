@@ -2,30 +2,30 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
 import { auth } from './firebase';
+
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const login = (event) => {
-    event.preventDefault();
+  const [password, setPassword] = useState();
 
+  const login = (event) => {
+    event.preventDefault(); //Stops the default refresh functionality of login button!!!
     // do login logic...
     auth
       .signInWithEmailAndPassword(email, password)
       .then((auth) => {
-        // logged in , redirect to homepage...
+        // logged in, redirect to homepage
         navigate('/');
       })
-      .catch((e) => alert(e.message));
+      .catch((error) => alert(error.message));
   };
 
   const register = (event) => {
     event.preventDefault();
-
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-        // create a user and logged in, redirect to homepage...
+        // create user and, redirect to homepage...
         navigate('/');
       })
       .catch((e) => alert(e.message));
@@ -52,7 +52,7 @@ function Login() {
           <h5>Password</h5>
           <input
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(event) => setPassword(event.target.password)}
             type="password"
           />
           <button onClick={login} type="submit" className="login__signInButton">
@@ -65,7 +65,7 @@ function Login() {
           Notice.
         </p>
         <button onClick={register} className="login__registerButton">
-          Create your Amazon Account
+          Create your Amazon Account{" "}
         </button>
       </div>
     </div>
