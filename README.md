@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+## Hosted Link
+Open[https://clone-9d9f5.web.app](https://clone-9d9f5.web.app) to view the Project.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
