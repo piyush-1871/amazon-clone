@@ -35,7 +35,7 @@ function App() {
     };
   }, []);
 
-  console.log('use is >>> ',user);
+  console.log('user is >>> ', user);
 
   return (
     <Router>

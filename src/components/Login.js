@@ -28,7 +28,7 @@ function Login() {
         // create user and, redirect to homepage...
         navigate('/');
       })
-      .catch((e) => alert(e.message));
+      .catch((e) => alert('error is ',e.message));
   };
 
   return (
